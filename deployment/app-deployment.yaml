@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory-app
+  template:
+    metadata:
+      labels:
+        app: inventory-app
+    spec:
+      containers:
+        - name: inventory-app
+          image: us-central1-docker.pkg.dev/lucid-sol-461210-m1/imcontainer/inventory-app:latest
+          ports:
+            - containerPort: 4000
+          env:
+            - name: MONGO_URI
+              value: mongodb+srv://ashwinsebastian76:ashwin2001@sit725.jctfcnw.mongodb.net/?retryWrites=true&w=majority&appName=SIT725  
